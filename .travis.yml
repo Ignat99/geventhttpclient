@@ -2,6 +2,9 @@ language: python
 python:
   - "2.6"
   - "2.7"
+  - "3.4"
 install:
-  - "pip install ."
+  - if [ "x$TRAVIS_PYTHON_VERSION" == "x2.6" ]; then "pip install ."; fi
+  - if [ "x$TRAVIS_PYTHON_VERSION" == "x2.7" ]; then "pip install ."; fi
+  - if [ "x$TRAVIS_PYTHON_VERSION" == "x3.4" ]; then "pip3.4 install ."; fi
 script: py.test src/geventhttpclient/tests
